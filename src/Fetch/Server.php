@@ -312,6 +312,9 @@ class Server
         } else {
             $imapStream = @imap_open($this->getServerString(), $this->username, $this->password, $this->options, 1, $this->params);
 
+            imap_alerts();
+            imap_errors();
+
             if ($imapStream === false)
                 throw new \RuntimeException(imap_last_error());
 
